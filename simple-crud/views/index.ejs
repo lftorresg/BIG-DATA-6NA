@@ -9,14 +9,14 @@
     <h1>Lista de Itens</h1>
     <form action="/items" method="POST">
         <input type="text" name="name" placeholder="Nome" required>
-        <input type="text" name="description" placeholder="Descrição" required>
+        <input type="email" name="email" placeholder="E-mail" required>
         <button type="submit">Adicionar Item</button>
     </form>
 
     <ul>
         <% items.forEach(item => { %>
             <li>
-                <strong><%= item.name %></strong>: <%= item.description %> 
+                <strong><%= item.name %></strong>: <%= item.email %> 
                 <a href="/items/<%= item._id %>/edit">Editar</a>
                 <form action="/items/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
                     <button type="submit">Deletar</button>

@@ -15,7 +15,7 @@ app.use(methodOverride('_method'));
 
 const ItemSchema = new mongoose.Schema({
     name: String,
-    description: String
+    email: String
 });
 
 const Item = mongoose.model('Item', ItemSchema);
@@ -28,7 +28,7 @@ app.get('/', async (req, res) => {
 app.post('/items', async (req, res) => {
     const newItem = new Item({
         name: req.body.name,
-        description: req.body.description
+        email: req.body.email
     });
     await newItem.save();
     res.redirect('/');
@@ -42,7 +42,7 @@ app.get('/items/:id/edit', async (req, res) => {
 app.put('/items/:id', async (req, res) => {
     const item = await Item.findByIdAndUpdate(req.params.id, {
         name: req.body.name,
-        description: req.body.description
+        email: req.body.email
     });
     res.redirect('/');
 });
@@ -52,7 +52,7 @@ app.delete('/items/:id', async (req, res) => {
     res.redirect('/');
 });
 
-const PORT = 4000;
+const PORT = 4444;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
