@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Example</title>
+</head>
+<body>
+    <h1>Lista de Itens</h1>
+    <form action="/items" method="POST">
+        <input type="text" name="name" placeholder="Nome" required>
+        <input type="text" name="description" placeholder="Descrição" required>
+        <button type="submit">Adicionar Item</button>
+    </form>
+
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <strong><%= item.name %></strong>: <%= item.description %> 
+                <a href="/items/<%= item._id %>/edit">Editar</a>
+                <form action="/items/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit">Deletar</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
